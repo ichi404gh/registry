@@ -1,0 +1,1620 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order",
+  "description": "An order is a customer's request to purchase one or more products from a shop. ",
+  "type": "object",
+  "properties": {
+    "app_id": {
+      "type": "number",
+      "description": "The ID of the app that created the order."
+    },
+    "billing_address": {
+      "type": "object",
+      "description": "The mailing address associated with the payment method. This address is an optional field that won't be available on orders that do not require a payment method. ",
+      "properties": {
+        "zip": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "company": {},
+        "country": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "province_code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "zip",
+        "city",
+        "name",
+        "phone",
+        "company",
+        "country",
+        "address1",
+        "address2",
+        "latitude",
+        "province",
+        "last_name",
+        "longitude",
+        "first_name",
+        "country_code",
+        "province_code"
+      ]
+    },
+    "browser_ip": {
+      "type": "string",
+      "description": "The IP address of the browser used by the customer when they placed the order. Both IPv4 and IPv6 are supported."
+    },
+    "buyer_accepts_marketing": {
+      "type": "boolean",
+      "description": "Whether the customer consented to receive email updates from the shop."
+    },
+    "cancel_reason": {
+      "type": "string"
+    },
+    "cancelled_at": {},
+    "cart_token": {
+      "type": "string"
+    },
+    "checkout_token": {
+      "type": "string"
+    },
+    "client_details": {
+      "type": "object",
+      "properties": {
+        "browser_ip": {
+          "type": "string"
+        },
+        "user_agent": {
+          "type": "string"
+        },
+        "session_hash": {
+          "type": "string"
+        },
+        "browser_width": {
+          "type": "number"
+        },
+        "browser_height": {
+          "type": "number"
+        },
+        "accept_language": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "browser_ip",
+        "user_agent",
+        "session_hash",
+        "browser_width",
+        "browser_height",
+        "accept_language"
+      ]
+    },
+    "closed_at": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "current_total_discounts": {
+      "type": "string"
+    },
+    "current_total_discounts_set": {
+      "type": "object",
+      "properties": {
+        "current_total_discounts_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["current_total_discounts_set"]
+    },
+    "current_total_duties_set": {
+      "type": "object",
+      "properties": {
+        "current_total_duties_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["current_total_duties_set"]
+    },
+    "current_total_price": {
+      "type": "string"
+    },
+    "current_total_price_set": {
+      "type": "object",
+      "properties": {
+        "current_total_price_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["current_total_price_set"]
+    },
+    "current_subtotal_price": {
+      "type": "string"
+    },
+    "current_subtotal_price_set": {
+      "type": "object",
+      "properties": {
+        "current_subtotal_price_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["current_subtotal_price_set"]
+    },
+    "current_total_tax": {
+      "type": "string"
+    },
+    "current_total_tax_set": {
+      "type": "object",
+      "properties": {
+        "current_total_tax_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["current_total_tax_set"]
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "note": {},
+        "tags": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "tax_exempt": {
+          "type": "boolean"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "total_spent": {
+          "type": "string"
+        },
+        "orders_count": {
+          "type": "string"
+        },
+        "last_order_id": {
+          "type": "number"
+        },
+        "tax_exemptions": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "verified_email": {
+          "type": "boolean"
+        },
+        "default_address": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "last_order_name": {
+          "type": "string"
+        },
+        "accepts_marketing": {
+          "type": "boolean"
+        },
+        "admin_graphql_api_id": {
+          "type": "string"
+        },
+        "multipass_identifier": {}
+      },
+      "required": [
+        "id",
+        "note",
+        "tags",
+        "email",
+        "phone",
+        "state",
+        "currency",
+        "addresses",
+        "last_name",
+        "created_at",
+        "first_name",
+        "tax_exempt",
+        "updated_at",
+        "total_spent",
+        "orders_count",
+        "last_order_id",
+        "tax_exemptions",
+        "verified_email",
+        "default_address",
+        "last_order_name",
+        "accepts_marketing",
+        "admin_graphql_api_id",
+        "multipass_identifier"
+      ]
+    },
+    "customer_locale": {
+      "type": "string"
+    },
+    "discount_applications": {
+      "type": "object",
+      "properties": {
+        "discount_applications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "value_type": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "target_type": {
+                "type": "string"
+              },
+              "target_selection": {
+                "type": "string"
+              },
+              "allocation_method": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "value",
+              "value_type",
+              "target_type",
+              "target_selection",
+              "allocation_method"
+            ]
+          }
+        }
+      },
+      "required": ["discount_applications"]
+    },
+    "discount_codes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          }
+        },
+        "required": ["code", "type", "amount"]
+      }
+    },
+    "email": {
+      "type": "string"
+    },
+    "estimated_taxes": {
+      "type": "boolean"
+    },
+    "financial_status": {
+      "type": "string"
+    },
+    "fulfillments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "order_id": {
+            "type": "number"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "tracking_number": {
+            "type": "string"
+          },
+          "tracking_company": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "order_id",
+          "created_at",
+          "updated_at",
+          "tracking_number",
+          "tracking_company"
+        ]
+      }
+    },
+    "fulfillment_status": {
+      "type": "string"
+    },
+    "gateway": {
+      "type": "string"
+    },
+    "id": {
+      "type": "number"
+    },
+    "landing_site": {
+      "type": "string"
+    },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "grams": {
+            "type": "number"
+          },
+          "price": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "duties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "tax_lines": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rate": {
+                        "type": "number"
+                      },
+                      "price": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "price_set": {
+                        "type": "object",
+                        "properties": {
+                          "shop_money": {
+                            "type": "object",
+                            "properties": {
+                              "amount": {
+                                "type": "string"
+                              },
+                              "currency_code": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["amount", "currency_code"]
+                          },
+                          "presentment_money": {
+                            "type": "object",
+                            "properties": {
+                              "amount": {
+                                "type": "string"
+                              },
+                              "currency_code": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["amount", "currency_code"]
+                          }
+                        },
+                        "required": ["shop_money", "presentment_money"]
+                      },
+                      "channel_liable": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "rate",
+                      "price",
+                      "title",
+                      "price_set",
+                      "channel_liable"
+                    ]
+                  }
+                },
+                "shop_money": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "string"
+                    },
+                    "currency_code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["amount", "currency_code"]
+                },
+                "presentment_money": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "string"
+                    },
+                    "currency_code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["amount", "currency_code"]
+                },
+                "admin_graphql_api_id": {
+                  "type": "string"
+                },
+                "country_code_of_origin": {
+                  "type": "string"
+                },
+                "harmonized_system_code": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "tax_lines",
+                "shop_money",
+                "presentment_money",
+                "admin_graphql_api_id",
+                "country_code_of_origin",
+                "harmonized_system_code"
+              ]
+            }
+          },
+          "vendor": {
+            "type": "string"
+          },
+          "taxable": {
+            "type": "boolean"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "gift_card": {
+            "type": "boolean"
+          },
+          "price_set": {
+            "type": "object",
+            "properties": {
+              "shop_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              },
+              "presentment_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              }
+            },
+            "required": ["shop_money", "presentment_money"]
+          },
+          "tax_lines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rate": {
+                  "type": "number"
+                },
+                "price": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "price_set": {
+                  "type": "object",
+                  "properties": {
+                    "shop_money": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "string"
+                        },
+                        "currency_code": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["amount", "currency_code"]
+                    },
+                    "presentment_money": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "string"
+                        },
+                        "currency_code": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["amount", "currency_code"]
+                    }
+                  },
+                  "required": ["shop_money", "presentment_money"]
+                },
+                "channel_liable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "rate",
+                "price",
+                "title",
+                "price_set",
+                "channel_liable"
+              ]
+            }
+          },
+          "product_id": {
+            "type": "number"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "value"]
+            }
+          },
+          "variant_id": {
+            "type": "number"
+          },
+          "variant_title": {
+            "type": "string"
+          },
+          "total_discount": {
+            "type": "string"
+          },
+          "origin_location": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "zip": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "address1": {
+                "type": "string"
+              },
+              "address2": {
+                "type": "string"
+              },
+              "country_code": {
+                "type": "string"
+              },
+              "province_code": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "zip",
+              "city",
+              "name",
+              "address1",
+              "address2",
+              "country_code",
+              "province_code"
+            ]
+          },
+          "requires_shipping": {
+            "type": "boolean"
+          },
+          "fulfillment_status": {
+            "type": "string"
+          },
+          "total_discount_set": {
+            "type": "object",
+            "properties": {
+              "shop_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              },
+              "presentment_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              }
+            },
+            "required": ["shop_money", "presentment_money"]
+          },
+          "fulfillment_service": {
+            "type": "string"
+          },
+          "discount_allocations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "amount_set": {
+                  "type": "object",
+                  "properties": {
+                    "shop_money": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "string"
+                        },
+                        "currency_code": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["amount", "currency_code"]
+                    },
+                    "presentment_money": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "string"
+                        },
+                        "currency_code": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["amount", "currency_code"]
+                    }
+                  },
+                  "required": ["shop_money", "presentment_money"]
+                },
+                "discount_application_index": {
+                  "type": "number"
+                }
+              },
+              "required": ["amount", "amount_set", "discount_application_index"]
+            }
+          },
+          "fulfillable_quantity": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "sku",
+          "name",
+          "grams",
+          "price",
+          "title",
+          "duties",
+          "vendor",
+          "taxable",
+          "quantity",
+          "gift_card",
+          "price_set",
+          "tax_lines",
+          "product_id",
+          "properties",
+          "variant_id",
+          "variant_title",
+          "total_discount",
+          "origin_location",
+          "requires_shipping",
+          "fulfillment_status",
+          "total_discount_set",
+          "fulfillment_service",
+          "discount_allocations",
+          "fulfillable_quantity"
+        ]
+      }
+    },
+    "location_id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "note_attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "value"]
+      }
+    },
+    "number": {
+      "type": "number"
+    },
+    "order_number": {
+      "type": "number"
+    },
+    "original_total_duties_set": {
+      "type": "object",
+      "properties": {
+        "original_total_duties_set": {
+          "type": "object",
+          "properties": {
+            "shop_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            },
+            "presentment_money": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "currency_code": {
+                  "type": "string"
+                }
+              },
+              "required": ["amount", "currency_code"]
+            }
+          },
+          "required": ["shop_money", "presentment_money"]
+        }
+      },
+      "required": ["original_total_duties_set"]
+    },
+    "payment_details": {
+      "type": "object",
+      "properties": {
+        "avs_result_code": {
+          "type": "string"
+        },
+        "credit_card_bin": {
+          "type": "string"
+        },
+        "cvv_result_code": {
+          "type": "string"
+        },
+        "credit_card_number": {
+          "type": "string"
+        },
+        "credit_card_company": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "avs_result_code",
+        "credit_card_bin",
+        "cvv_result_code",
+        "credit_card_number",
+        "credit_card_company"
+      ]
+    },
+    "payment_terms": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "due_in_days": {
+          "type": "number"
+        },
+        "payment_schedules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number"
+              },
+              "due_at": {
+                "type": "string"
+              },
+              "currency": {
+                "type": "string"
+              },
+              "issued_at": {
+                "type": "string"
+              },
+              "completed_at": {
+                "type": "string"
+              },
+              "expected_payment_method": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "amount",
+              "due_at",
+              "currency",
+              "issued_at",
+              "completed_at",
+              "expected_payment_method"
+            ]
+          }
+        },
+        "payment_terms_name": {
+          "type": "string"
+        },
+        "payment_terms_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "due_in_days",
+        "payment_schedules",
+        "payment_terms_name",
+        "payment_terms_type"
+      ]
+    },
+    "payment_gateway_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "phone": {
+      "type": "string"
+    },
+    "presentment_currency": {
+      "type": "string"
+    },
+    "processed_at": {
+      "type": "string"
+    },
+    "processing_method": {
+      "type": "string"
+    },
+    "referring_site": {
+      "type": "string"
+    },
+    "refunds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "note": {},
+          "user_id": {},
+          "order_id": {
+            "type": "number"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "processed_at": {
+            "type": "string"
+          },
+          "transactions": {
+            "type": "array",
+            "items": {}
+          },
+          "order_adjustments": {
+            "type": "array",
+            "items": {}
+          },
+          "refund_line_items": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "id",
+          "note",
+          "user_id",
+          "order_id",
+          "created_at",
+          "processed_at",
+          "transactions",
+          "order_adjustments",
+          "refund_line_items"
+        ]
+      }
+    },
+    "shipping_address": {
+      "type": "object",
+      "properties": {
+        "zip": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "company": {},
+        "country": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "province_code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "zip",
+        "city",
+        "name",
+        "phone",
+        "company",
+        "country",
+        "address1",
+        "address2",
+        "latitude",
+        "province",
+        "last_name",
+        "longitude",
+        "first_name",
+        "country_code",
+        "province_code"
+      ]
+    },
+    "shipping_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "price_set": {
+            "type": "object",
+            "properties": {
+              "shop_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              },
+              "presentment_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              }
+            },
+            "required": ["shop_money", "presentment_money"]
+          },
+          "tax_lines": {
+            "type": "array",
+            "items": {}
+          },
+          "discounted_price": {
+            "type": "string"
+          },
+          "carrier_identifier": {
+            "type": "string"
+          },
+          "discounted_price_set": {
+            "type": "object",
+            "properties": {
+              "shop_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              },
+              "presentment_money": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "string"
+                  },
+                  "currency_code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["amount", "currency_code"]
+              }
+            },
+            "required": ["shop_money", "presentment_money"]
+          },
+          "requested_fulfillment_service_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "price",
+          "title",
+          "source",
+          "price_set",
+          "tax_lines",
+          "discounted_price",
+          "carrier_identifier",
+          "discounted_price_set",
+          "requested_fulfillment_service_id"
+        ]
+      }
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "subtotal_price": {
+      "type": "number"
+    },
+    "subtotal_price_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "tags": {
+      "type": "string"
+    },
+    "tax_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rate": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "channel_liable": {
+            "type": "boolean"
+          }
+        },
+        "required": ["rate", "price", "title", "channel_liable"]
+      }
+    },
+    "taxes_included": {
+      "type": "boolean"
+    },
+    "test": {
+      "type": "boolean"
+    },
+    "token": {
+      "type": "string"
+    },
+    "total_discounts": {
+      "type": "string"
+    },
+    "total_discounts_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "total_line_items_price": {
+      "type": "string"
+    },
+    "total_line_items_price_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "total_outstanding": {
+      "type": "string"
+    },
+    "total_price": {
+      "type": "string"
+    },
+    "total_price_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "total_shipping_price_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "total_tax": {
+      "type": "string"
+    },
+    "total_tax_set": {
+      "type": "object",
+      "properties": {
+        "shop_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        },
+        "presentment_money": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "string"
+            },
+            "currency_code": {
+              "type": "string"
+            }
+          },
+          "required": ["amount", "currency_code"]
+        }
+      },
+      "required": ["shop_money", "presentment_money"]
+    },
+    "total_tip_received": {
+      "type": "string"
+    },
+    "total_weight": {
+      "type": "number"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "number"
+    },
+    "order_status_url": {
+      "type": "object",
+      "properties": {
+        "order_status_url": {
+          "type": "string"
+        }
+      },
+      "required": ["order_status_url"]
+    }
+  },
+  "required": ["id"]
+}
