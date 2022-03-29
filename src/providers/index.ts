@@ -4,6 +4,7 @@ import { NetsuiteProvider } from "./netsuite";
 import { RampProvider } from "./ramp";
 import { KlaviyoProvider } from "./klaviyo";
 import { FlexportProvider } from "./flexport";
+import { ShipbobProvider } from "./shipbob";
 
 export default {
   stripe: new StripeProvider(),
@@ -12,4 +13,5 @@ export default {
   ramp: new RampProvider(),
   flexport: new FlexportProvider(),
   klaviyo: new KlaviyoProvider(),
+  shipbob: new ShipbobProvider(),
 };
