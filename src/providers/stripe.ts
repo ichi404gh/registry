@@ -24,7 +24,9 @@ export class StripeProvider implements OpenAPIProvider {
   async unbundle(bundle: OpenAPI3Schema): Promise<EntitySchema[]> {
     const dereferenced = await openAPIParser.dereference(bundle.value as any);
 
-    if (!("components" in dereferenced)) throw new Error("Expected components");
+    if (!("components" in dereferenced)) {
+      throw new Error("Expected components");
+    }
 
     return Object.entries(dereferenced.components?.schemas ?? {})
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
@@ -35,12 +37,7 @@ export class StripeProvider implements OpenAPIProvider {
   }
 
   async getSchema(version: string): Promise<OpenAPI3Schema> {
-    const definition = await github.getRaw(
-      "stripe",
-      "openapi",
-      version,
-      "openapi/spec3.json"
-    );
+    const definition = await github.getRaw("stripe", "openapi", version, "openapi/spec3.json");
 
     return {
       type: "openapi-v3",
@@ -124,9 +121,7 @@ function traverse(schema: OpenAPIV3.SchemaObject, parents: Set<String>): any {
   const type = _.isArray(schema.type) ? _.first(schema.type) : schema.type;
 
   if (type === "object") {
-    const isTraveralDepthExceeded =
-      (schema.title != undefined && parents.has(schema.title)) ||
-      parents.size > maxDepth;
+    const isTraveralDepthExceeded = (schema.title != undefined && parents.has(schema.title)) || parents.size > maxDepth;
 
     if (isTraveralDepthExceeded) {
       return { type };

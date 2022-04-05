@@ -16,11 +16,7 @@ function validateSchema(jsonSchema: string): SchemaObject {
 
     if (!isSchemaVersionSupported(schemaObject)) {
       throw new Error(
-        `the "${
-          schemaObject.$schema
-        }" is not allowed. Use one of [${supportedSchemaVersions.join(
-          ","
-        )}] instead`
+        `the "${schemaObject.$schema}" is not allowed. Use one of [${supportedSchemaVersions.join(",")}] instead`,
       );
     }
 
@@ -79,10 +75,7 @@ function getAjvInstance(type: "json-schema-2020-12" = "json-schema-2020-12") {
     defaultMeta: metaSchemas[type],
   });
   AjvFormats(instance);
-  instance.addFormat("unix-time", {
-    type: "number",
-    validate: (x: number) => x > 0,
-  });
+  instance.addFormat("unix-time", { type: "number", validate: (x: number) => x > 0 });
 
   instance.addFormat("decimal", {
     validate: (x: string) => {
@@ -91,18 +84,13 @@ function getAjvInstance(type: "json-schema-2020-12" = "json-schema-2020-12") {
     },
   });
 
-  instance.addFormat("string", {
-    validate: () => true,
-  });
+  instance.addFormat("string", { validate: () => true });
   instance.addKeyword("example");
 
   return instance;
 }
 
-const metaSchemas: Record<
-  NonNullable<"json-schema-2020-12">,
-  Record<string, unknown>
-> = {
+const metaSchemas: Record<NonNullable<"json-schema-2020-12">, Record<string, unknown>> = {
   "json-schema-2020-12": Ajv202012Schema,
 };
 

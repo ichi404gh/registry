@@ -22,6 +22,7 @@ jobs:
           command: npm ci
         env:
           GITHUB_TOKEN: ${{secrets.ENG_GITHUB_TOKEN}}
+      - run: npm run style
       - run: npm run generate
         env:
           GITHUB_TOKEN: ${{secrets.ENG_GITHUB_TOKEN}}

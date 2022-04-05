@@ -14,12 +14,7 @@ export class FlexportProvider implements OpenAPIProvider {
   }
 
   async getSchema(version: string): Promise<OpenAPI3Schema> {
-    const definition = await github.getRaw(
-      "distributeaid",
-      "flexport-sdk-js",
-      "saga",
-      `api-docs/${version}.yaml`
-    );
+    const definition = await github.getRaw("distributeaid", "flexport-sdk-js", "saga", `api-docs/${version}.yaml`);
 
     return {
       type: "openapi-v3",
@@ -33,14 +28,13 @@ export class FlexportProvider implements OpenAPIProvider {
     const dereferenced = await openAPIParser.dereference(bundle.value as any);
 
     const hasComponents = "components" in dereferenced;
-    if (!hasComponents) throw new Error("Expected components");
+    if (!hasComponents) {
+      throw new Error("Expected components");
+    }
 
     return Object.entries(dereferenced.components?.schemas ?? {})
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
-      .map(([key, value]) => ({
-        name: key,
-        schema: sanitizeSchema(value),
-      }));
+      .map(([key, value]) => ({ name: key, schema: sanitizeSchema(value) }));
   }
 }
 
@@ -52,26 +46,17 @@ function sanitizeSchema(schema: unknown) {
       }
 
       if (key === "code") {
-        return {
-          ...value,
-          example: value.example.toString(),
-        };
+        return { ...value, example: value.example.toString() };
       }
 
       if (key === "value" && value.format === "decimal") {
-        return {
-          ...value,
-          example: "1000.0",
-        };
+        return { ...value, example: "1000.0" };
       }
 
       if (key === "codes" && value?.items?.example) {
         return {
           ...value,
-          items: {
-            ...value.items,
-            example: value.items.example.toString(),
-          },
+          items: { ...value.items, example: value.items.example.toString() },
         };
       }
 
@@ -95,6 +80,6 @@ function sanitizeSchema(schema: unknown) {
       }
 
       return value;
-    })
+    }),
   );
 }

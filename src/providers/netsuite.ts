@@ -52,32 +52,18 @@ export class NetsuiteProvider {
     };
   }
 
-  async unbundle({
-    entities,
-    versionName,
-  }: {
-    entities: string[];
-    versionName: string;
-  }): Promise<EntitySchema[]> {
+  async unbundle({ entities, versionName }: { entities: string[]; versionName: string }): Promise<EntitySchema[]> {
     const schemas: EntitySchema[] = [];
 
     for (let index in entities) {
       const entityName = entities[index];
       const schemaRequestResponse = await nsApi.request({
         path: `record/${versionName}/metadata-catalog/${entityName}`,
-        heads: {
-          Accept: "application/schema+json",
-        },
+        heads: { Accept: "application/schema+json" },
       });
-      const cleanSchema = sanitizeSchema(
-        schemaRequestResponse.data,
-        entityName
-      );
+      const cleanSchema = sanitizeSchema(schemaRequestResponse.data, entityName);
 
-      schemas.push({
-        name: entityName,
-        schema: cleanSchema,
-      });
+      schemas.push({ name: entityName, schema: cleanSchema });
     }
 
     return schemas;
@@ -91,16 +77,13 @@ function sanitizeSchema(schema: unknown, entityName: string) {
         delete value.nullable;
       }
 
-      const isKeyUnsupported =
-        key === "x-ns-filterable" || key == "x-ns-custom-field";
+      const isKeyUnsupported = key === "x-ns-filterable" || key == "x-ns-custom-field";
 
       if (isKeyUnsupported) {
         return undefined;
       }
 
-      const isNsLink =
-        key === "items" &&
-        value["$ref"] === "/services/rest/record/v1/metadata-catalog/nsLink";
+      const isNsLink = key === "items" && value["$ref"] === "/services/rest/record/v1/metadata-catalog/nsLink";
 
       if (isNsLink) {
         return nsLinkSchema;
@@ -113,29 +96,18 @@ function sanitizeSchema(schema: unknown, entityName: string) {
 
       // Bug in their schema, "type": "object" is
       if (key === "quantity" && entityName === "inventoryitem") {
-        return {
-          type: "object",
-          ...value,
-        };
+        return { type: "object", ...value };
       }
 
       return value;
-    })
+    }),
   );
 }
 
 const nsLinkSchema = {
   type: "object",
   properties: {
-    rel: {
-      title: "Relationship",
-      type: "string",
-      readOnly: true,
-    },
-    href: {
-      title: "Hypertext Reference",
-      type: "string",
-      readOnly: true,
-    },
+    rel: { title: "Relationship", type: "string", readOnly: true },
+    href: { title: "Hypertext Reference", type: "string", readOnly: true },
   },
 };

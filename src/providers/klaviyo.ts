@@ -13,9 +13,7 @@ export class KlaviyoProvider implements OpenAPIProvider {
   }
 
   async getSchema(version: string): Promise<OpenAPI3Schema> {
-    const definition = await axios.get(
-      "https://klaviyo-openapi.s3.amazonaws.com/spec.json"
-    );
+    const definition = await axios.get("https://klaviyo-openapi.s3.amazonaws.com/spec.json");
 
     return {
       type: "openapi-v3",
@@ -37,14 +35,13 @@ export class KlaviyoProvider implements OpenAPIProvider {
     const dereferenced = await openAPIParser.dereference(bundle.value as any);
 
     const hasComponents = "components" in dereferenced;
-    if (!hasComponents) throw new Error("Expected components");
+    if (!hasComponents) {
+      throw new Error("Expected components");
+    }
 
     return Object.entries(dereferenced.components?.schemas ?? {})
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
-      .map(([key, value]) => ({
-        name: key,
-        schema: sanitizeSchema(value),
-      }));
+      .map(([key, value]) => ({ name: key, schema: sanitizeSchema(value) }));
   }
 }
 
@@ -52,6 +49,6 @@ function sanitizeSchema(schema: unknown) {
   return JSON.parse(
     JSON.stringify(schema, (key, value) => {
       return value;
-    })
+    }),
   );
 }

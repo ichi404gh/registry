@@ -1,9 +1,4 @@
-import {
-  EntitySchema,
-  OpenAPI3Schema,
-  OpenAPIProvider,
-  Provider,
-} from "../provider";
+import { EntitySchema, OpenAPI3Schema, OpenAPIProvider } from "../provider";
 import * as github from "../github";
 import openAPIParser from "@readme/openapi-parser";
 import _ from "lodash";
@@ -14,21 +9,11 @@ export class TwilioProvider implements OpenAPIProvider {
   }
 
   async getVersions(): Promise<string[]> {
-    return [
-      "twilio_messaging_v1",
-      "twilio_api_v2010",
-      "twilio_events_v1",
-      "twilio_taskrouter_v1",
-    ];
+    return ["twilio_messaging_v1", "twilio_api_v2010", "twilio_events_v1", "twilio_taskrouter_v1"];
   }
 
   async getSchema(version: string): Promise<OpenAPI3Schema> {
-    const definition = await github.getRaw(
-      "twilio",
-      "twilio-oai",
-      "main",
-      `spec/json/${version}.json`
-    );
+    const definition = await github.getRaw("twilio", "twilio-oai", "main", `spec/json/${version}.json`);
     return {
       type: "openapi-v3",
       versionName: version,
@@ -57,14 +42,13 @@ export class TwilioProvider implements OpenAPIProvider {
     const dereferenced = await openAPIParser.dereference(bundle.value as any);
 
     const hasComponents = "components" in dereferenced;
-    if (!hasComponents) throw new Error("Expected components");
+    if (!hasComponents) {
+      throw new Error("Expected components");
+    }
 
     return Object.entries(dereferenced.components?.schemas ?? {})
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
-      .map(([key, value]) => ({
-        name: key,
-        schema: sanitizeSchema(value),
-      }));
+      .map(([key, value]) => ({ name: key, schema: sanitizeSchema(value) }));
   }
 }
 function sanitizeSchema(schema: unknown) {
@@ -79,6 +63,6 @@ function sanitizeSchema(schema: unknown) {
       }
 
       return value;
-    })
+    }),
   );
 }

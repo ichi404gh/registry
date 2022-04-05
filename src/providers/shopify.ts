@@ -1,10 +1,6 @@
 import { getIntrospectionQuery } from "graphql";
 import axios from "axios";
-import {
-  GraphQLIntrospectionSchema,
-  GraphQLProvider,
-  EntitySchema,
-} from "../provider";
+import { GraphQLIntrospectionSchema, GraphQLProvider, EntitySchema } from "../provider";
 import { fromIntrospectionQuery } from "graphql-2-json-schema";
 import { IntrospectionQuery } from "graphql";
 import jsonSchemaRefParser from "@apidevtools/json-schema-ref-parser";
@@ -19,37 +15,25 @@ export class ShopifyProvider implements GraphQLProvider {
   }
 
   async unbundle(bundle: GraphQLIntrospectionSchema): Promise<EntitySchema[]> {
-    const jsonSchema = fromIntrospectionQuery(
-      bundle.value as IntrospectionQuery,
-      {
-        ignoreInternals: true,
-        nullableArrayItems: true,
-      }
-    );
+    const jsonSchema = fromIntrospectionQuery(bundle.value as IntrospectionQuery, {
+      ignoreInternals: true,
+      nullableArrayItems: true,
+    });
 
     // Introspection schema lacks QueryRoot definition - adding it manually so it won't crash on dereferencing
-    jsonSchema.definitions!["QueryRoot"] = {
-      type: "object",
-      title: "root",
-      description: "root",
-    };
+    jsonSchema.definitions!["QueryRoot"] = { type: "object", title: "root", description: "root" };
 
-    const dereferencedSchemas = await jsonSchemaRefParser.dereference(
-      jsonSchema,
-      { dereference: { circular: "ignore" } }
-    );
+    const dereferencedSchemas = await jsonSchemaRefParser.dereference(jsonSchema, {
+      dereference: { circular: "ignore" },
+    });
 
-    if (!("definitions" in dereferencedSchemas))
+    if (!("definitions" in dereferencedSchemas)) {
       throw new Error("Expected definitions");
+    }
 
     return Object.entries(dereferencedSchemas.definitions ?? {})
-      .filter(([key]) =>
-        !bundle.entities ? true : bundle.entities.includes(key)
-      )
-      .map(([key, value]) => ({
-        name: key,
-        schema: value,
-      }));
+      .filter(([key]) => (!bundle.entities ? true : bundle.entities.includes(key)))
+      .map(([key, value]) => ({ name: key, schema: value }));
   }
 
   async getSchema(version: string): Promise<GraphQLIntrospectionSchema> {
@@ -62,7 +46,7 @@ export class ShopifyProvider implements GraphQLProvider {
           "Content-Type": "application/graphql",
         },
         timeout: 30000,
-      }
+      },
     );
 
     return {

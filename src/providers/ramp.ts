@@ -18,14 +18,13 @@ export class RampProvider implements OpenAPIProvider {
     const dereferenced = await openAPIParser.dereference(bundle.value as any);
 
     const hasComponents = "components" in dereferenced;
-    if (!hasComponents) throw new Error("Expected components");
+    if (!hasComponents) {
+      throw new Error("Expected components");
+    }
 
     return Object.entries(dereferenced.components?.schemas ?? {})
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
-      .map(([key, value]) => ({
-        name: key,
-        schema: value,
-      }));
+      .map(([key, value]) => ({ name: key, schema: value }));
   }
 
   async getSchema(version: string): Promise<OpenAPI3Schema> {
