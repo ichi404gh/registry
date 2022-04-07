@@ -10,6 +10,10 @@ const maxDepth = 3;
 export class StripeProvider extends OpenAPIProvider {
   constructor() {
     super({
+      name: "Stripe",
+      logoUrl: "https://logo.clearbit.com/stripe.com",
+      description:
+        "Online payment processing for internet businesses. Stripe is a suite of payment APIs that powers commerce for online businesses of all sizes.",
       versions: ["v112"],
       baseUrl: "unused",
       entities: [
@@ -51,18 +55,12 @@ export class StripeProvider extends OpenAPIProvider {
         "topup",
         "transfer",
       ],
-      sanitizeSchema: (value) =>
-        traverse(deepcopy(value) as OpenAPIV3.SchemaObject, new Set<String>()),
+      sanitizeSchema: (value) => traverse(deepcopy(value) as OpenAPIV3.SchemaObject, new Set<String>()),
     });
   }
 
   override async getSchema(version: string): Promise<OpenAPI3Schema> {
-    const definition = await github.getRaw(
-      "stripe",
-      "openapi",
-      version,
-      "openapi/spec3.json"
-    );
+    const definition = await github.getRaw("stripe", "openapi", version, "openapi/spec3.json");
 
     return {
       type: "openapi-v3",
@@ -108,9 +106,7 @@ function traverse(schema: OpenAPIV3.SchemaObject, parents: Set<String>): any {
   const type = _.isArray(schema.type) ? _.first(schema.type) : schema.type;
 
   if (type === "object") {
-    const isTraveralDepthExceeded =
-      (schema.title != undefined && parents.has(schema.title)) ||
-      parents.size > maxDepth;
+    const isTraveralDepthExceeded = (schema.title != undefined && parents.has(schema.title)) || parents.size > maxDepth;
 
     if (isTraveralDepthExceeded) {
       return { type };

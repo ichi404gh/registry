@@ -1,16 +1,23 @@
-import { EntitySchema, OpenAPI3Schema } from "../provider";
+import { BaseProvider, EntitySchema, OpenAPI3Schema } from "../provider";
 import _ from "lodash";
 import axios from "axios";
 import openAPIParser from "@readme/openapi-parser";
 
 export interface OpenAPIProviderProps {
+  name: string;
+  description: string;
+  logoUrl: string;
   versions: string[];
   baseUrl?: string;
   entities?: string[];
   sanitizeSchema?: (schema: unknown) => unknown;
 }
 
-export class OpenAPIProvider {
+export class OpenAPIProvider implements BaseProvider {
+  public readonly name: string;
+  public readonly description: string;
+  public readonly logoUrl: string;
+  public readonly customPath: string | undefined;
   /**
    * Versions of the provider's API that are fetched
    */
@@ -29,12 +36,10 @@ export class OpenAPIProvider {
    */
   private readonly sanitizeSchemaFunction?: (schema: unknown) => unknown;
 
-  constructor({
-    versions,
-    baseUrl,
-    entities,
-    sanitizeSchema,
-  }: OpenAPIProviderProps) {
+  constructor({ versions, baseUrl, entities, sanitizeSchema, name, logoUrl, description }: OpenAPIProviderProps) {
+    this.name = name;
+    this.description = description;
+    this.logoUrl = logoUrl;
     this.versions = versions;
     this.baseUrl = baseUrl;
     this.entities = entities;
@@ -63,9 +68,7 @@ export class OpenAPIProvider {
    */
   async getSchema(version: string): Promise<OpenAPI3Schema> {
     if (!this.baseUrl) {
-      throw new Error(
-        'Neither "baseUrl" wasn\'t provided, nor method "getSchema" was overriden'
-      );
+      throw new Error('Neither "baseUrl" wasn\'t provided, nor method "getSchema" was overriden');
     }
 
     const definition = await axios.get(this.baseUrl);
@@ -95,9 +98,7 @@ export class OpenAPIProvider {
       .filter(([key]) => !bundle.entities || bundle.entities.includes(key))
       .map(([key, value]) => ({
         name: key,
-        schema: this.sanitizeSchemaFunction
-          ? this.sanitizeSchemaFunction(value)
-          : sanitizeSchema(value),
+        schema: this.sanitizeSchemaFunction ? this.sanitizeSchemaFunction(value) : sanitizeSchema(value),
       }));
   }
 }
@@ -106,6 +107,6 @@ function sanitizeSchema(schema: unknown) {
   return JSON.parse(
     JSON.stringify(schema, (_, value) => {
       return value;
-    })
+    }),
   );
 }
