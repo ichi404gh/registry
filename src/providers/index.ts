@@ -1,23 +1,28 @@
-import { StripeProvider } from "./stripe";
-import { ShopifyProvider } from "./shopify";
+import { BatonProvider } from "./baton";
+import { ConvoyProvider } from "./convoy";
+import { FedexShipProvider } from "./fedex/ship";
+import { FlexportProvider } from "./flexport";
+import { FreightOSProvider } from "./freightos";
+import { KlaviyoProvider } from "./klaviyo";
+import { MaerskProvider } from "./maersk";
 import { NetsuiteProvider } from "./netsuite";
 import { RampProvider } from "./ramp";
-import { KlaviyoProvider } from "./klaviyo";
-import { TwilioProvider } from "./twilio";
-import { FlexportProvider } from "./flexport";
-import { XPOLogisticsProvider } from "./xpoLogistics";
-import { MaerskProvider } from "./maersk";
-import { BatonProvider } from "./baton";
-import { SquareProvider } from "./square";
 import { ShipbobProvider } from "./shipbob";
+import { ShopifyProvider } from "./shopify";
+import { SquareProvider } from "./square";
+import { StripeProvider } from "./stripe";
+import { TwilioProvider } from "./twilio";
 import { UPSFreightShipProvider } from "./ups/freightShip";
 import { UPSShipmentProvider } from "./ups/shipment";
 import { UPSTrackProvider } from "./ups/track";
+import { QuickbooksProvider } from "./quickbooks";
 import { FedexShipProvider } from "./fedex/ship";
 import { ConvoyProvider } from "./convoy";
 import { FreightOSProvider } from "./freightos";
 import { WebCargoProvider } from "./webcargo";
 import { ShipwellProvider } from "./shipwell";
+import { XeroAccountingProvider } from "./xero/accounting";
+import { XPOLogisticsProvider } from "./xpoLogistics";
 
 export default {
   baton: new BatonProvider(),
@@ -31,6 +36,7 @@ export default {
   ramp: new RampProvider(),
   shipbob: new ShipbobProvider(),
   shipwell: new ShipwellProvider(),
+  quickbooks: new QuickbooksProvider(),
   shopify: new ShopifyProvider(),
   square: new SquareProvider(),
   stripe: new StripeProvider(),
@@ -39,5 +45,6 @@ export default {
   upsShipment: new UPSShipmentProvider(),
   upsTrack: new UPSTrackProvider(),
   webCargo: new WebCargoProvider(),
+  xeroAccounting: new XeroAccountingProvider(),
   xpoLogistics: new XPOLogisticsProvider(),
 };

@@ -1,0 +1,18 @@
+{
+  "description": "Update a bill\nContent-Type:application/json\nMethod - POST\n\nSample Request\n\n{\n    \"Id\": \"149\",\n    \"SyncToken\": \"0\"\n}\n\nSample Response - \n\n{\n  \"Bill\": {\n    \"domain\": \"QBO\",\n    \"status\": \"Deleted\",\n    \"Id\": \"149\"\n  },\n  \"time\": \"2016-08-18T10:02:41.570-07:00\"\n}",
+  "type": "object",
+  "title": "Bill-Delete",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    }
+  },
+  "default": {
+    "Id": "149",
+    "SyncToken": "0"
+  }
+}

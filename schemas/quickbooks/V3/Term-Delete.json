@@ -1,0 +1,46 @@
+{
+  "description": "Update a term object\nMethod : POST\n\nTerm object can't be deleted parmanently. It can only be deactived by setting the 'Active' attribute to false.",
+  "type": "object",
+  "title": "Term-Delete",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Active": {
+      "type": "boolean"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "DiscountPercent": {
+      "type": "integer"
+    },
+    "DueDays": {
+      "type": "integer"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "sparse": {
+      "type": "boolean"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    }
+  },
+  "default": {
+    "Name": "Term1120-Updated",
+    "Active": false,
+    "Type": "STANDARD",
+    "DiscountPercent": 0,
+    "DueDays": 120,
+    "domain": "QBO",
+    "sparse": false,
+    "Id": "8",
+    "SyncToken": "1"
+  }
+}

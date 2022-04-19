@@ -1,0 +1,22 @@
+{
+  "description": "Void a salesreceipt object\nMethod : POST\n\nUse a sparse update operation with include=void to void an existing SalesReceipt object; include a minimum of SalesReceipt.Id and SalesReceipt.SyncToken. The transaction remains active but all amounts and quantities are zeroed and the string, Voided, is injected into SalesReceipt.PrivateNote, prepended to existing text if present. If a sales receipt is paid and funds have been deposited, you must delete the associated deposit object before voiding the salesreceipt object.\n\n",
+  "type": "object",
+  "title": "SalesReceipt-Void",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "sparse": {
+      "type": "boolean"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    }
+  },
+  "default": {
+    "sparse": true,
+    "Id": "188",
+    "SyncToken": "0"
+  }
+}

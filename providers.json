@@ -55,6 +55,11 @@
     "description": "Shipwell is a freight trucking startup that provides business with automated way transport of goods and services. "
   },
   {
+    "name": "Quickbooks",
+    "logoUrl": "https://logo.clearbit.com/quickbooks.com",
+    "description": "Intuit QuickBooks is small business financial software supporting small business start-ups to track, organize, and manage their finances."
+  },
+  {
     "name": "Shopify",
     "logoUrl": "https://logo.clearbit.com/shopify.com",
     "description": "Shopify is a leading global commerce company, providing trusted tools to start, grow, market, and manage a retail business of any size."
@@ -93,6 +98,11 @@
     "name": "WebCargo",
     "logoUrl": "https://www.webcargo.co/wp-content/uploads/2019/05/horizontal-color-logo-with-white-text.png",
     "description": "WebCargo is a Digital Air Cargo leader, offering real-time air cargo capacity, pricing, and eBooking on the largest airline network."
+  },
+  {
+    "name": "XeroAccounting",
+    "logoUrl": "https://logo.clearbit.com/xero.com",
+    "description": "Xero online accounting software for your business connects you to your bank, accountant, bookkeeper, and other business apps."
   },
   {
     "name": "XPO Logistics",

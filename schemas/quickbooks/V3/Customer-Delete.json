@@ -1,0 +1,30 @@
+{
+  "description": "Delete a customer by Id\nMethod : POST\n\nCustomer(or any Name List entities) can't be deleted permanently. It can only be inactived by setting the value of 'Active' attribute to false.",
+  "type": "object",
+  "title": "Customer-Delete",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "sparse": {
+      "type": "boolean"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    },
+    "Active": {
+      "type": "boolean"
+    }
+  },
+  "default": {
+    "domain": "QBO",
+    "sparse": true,
+    "Id": "67",
+    "SyncToken": "0",
+    "Active": false
+  }
+}

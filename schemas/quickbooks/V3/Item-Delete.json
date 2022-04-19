@@ -1,0 +1,112 @@
+{
+  "description": "Delete an item object\nMethod : POST\n\nItem object can't be deleted permanently. It can only be dactivated. \n\nDelete endpoint returns full item details.\n\nSample response payload \n\n{\n  \"Item\": {\n    \"Name\": \"Garden Supplies-Updated (deleted)\",\n    \"Active\": false,\n    \"FullyQualifiedName\": \"Garden Supplies-Updated (deleted)\",\n    \"Taxable\": false,\n    \"UnitPrice\": 0,\n    \"Type\": \"Inventory\",\n    \"IncomeAccountRef\": {\n      \"value\": \"79\",\n      \"name\": \"Sales of Product Income\"\n    },\n    \"PurchaseCost\": 0,\n    \"ExpenseAccountRef\": {\n      \"value\": \"80\",\n      \"name\": \"Cost of Goods Sold\"\n    },\n    \"AssetAccountRef\": {\n      \"value\": \"81\",\n      \"name\": \"Inventory Asset\"\n    },\n    \"TrackQtyOnHand\": true,\n    \"QtyOnHand\": 0,\n    \"InvStartDate\": \"2015-01-01\",\n    \"domain\": \"QBO\",\n    \"sparse\": false,\n    \"Id\": \"20\",\n    \"SyncToken\": \"2\",\n    \"MetaData\": {\n      \"CreateTime\": \"2016-08-18T20:05:48-07:00\",\n      \"LastUpdatedTime\": \"2016-08-18T20:09:43-07:00\"\n    }\n  },\n  \"time\": \"2016-08-18T20:09:43.174-07:00\"\n}",
+  "type": "object",
+  "title": "Item-Delete",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Active": {
+      "type": "boolean"
+    },
+    "FullyQualifiedName": {
+      "type": "string"
+    },
+    "Taxable": {
+      "type": "boolean"
+    },
+    "UnitPrice": {
+      "type": "integer"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "IncomeAccountRef": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PurchaseCost": {
+      "type": "integer"
+    },
+    "ExpenseAccountRef": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetAccountRef": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "TrackQtyOnHand": {
+      "type": "boolean"
+    },
+    "QtyOnHand": {
+      "type": "integer"
+    },
+    "InvStartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "sparse": {
+      "type": "boolean"
+    },
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    }
+  },
+  "default": {
+    "Name": "Garden Supplies-Updated",
+    "Active": false,
+    "FullyQualifiedName": "Garden Supplies-Updated",
+    "Taxable": false,
+    "UnitPrice": 0,
+    "Type": "Inventory",
+    "IncomeAccountRef": {
+      "value": "79",
+      "name": "Sales of Product Income"
+    },
+    "PurchaseCost": 0,
+    "ExpenseAccountRef": {
+      "value": "80",
+      "name": "Cost of Goods Sold"
+    },
+    "AssetAccountRef": {
+      "value": "81",
+      "name": "Inventory Asset"
+    },
+    "TrackQtyOnHand": true,
+    "QtyOnHand": 10,
+    "InvStartDate": "2015-01-01",
+    "domain": "QBO",
+    "sparse": false,
+    "Id": "20",
+    "SyncToken": "0"
+  }
+}

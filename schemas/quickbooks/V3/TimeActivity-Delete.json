@@ -1,0 +1,18 @@
+{
+  "description": "Delete a time-activity object by Id\nMethod : POST\n\n",
+  "type": "object",
+  "title": "TimeActivity-Delete",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "SyncToken": {
+      "type": "string"
+    }
+  },
+  "default": {
+    "Id": "6",
+    "SyncToken": "1"
+  }
+}

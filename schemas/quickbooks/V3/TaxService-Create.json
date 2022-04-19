@@ -1,0 +1,42 @@
+{
+  "description": "Use TaxService to create taxcode and corresponding taxrates\nMethod : POST\n",
+  "type": "object",
+  "title": "TaxService-Create",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "TaxCode": {
+      "type": "string"
+    },
+    "TaxRateDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "TaxRateName": {
+            "type": "string"
+          },
+          "RateValue": {
+            "type": "string"
+          },
+          "TaxAgencyId": {
+            "type": "string"
+          },
+          "TaxApplicableOn": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "default": {
+    "TaxCode": "MyTaxCodeName",
+    "TaxRateDetails": [
+      {
+        "TaxRateName": "myNewTaxRateName",
+        "RateValue": "8",
+        "TaxAgencyId": "1",
+        "TaxApplicableOn": "Sales"
+      }
+    ]
+  }
+}
